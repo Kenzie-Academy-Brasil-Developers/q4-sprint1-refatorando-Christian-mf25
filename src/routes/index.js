@@ -5,7 +5,6 @@ import vehicleRoutes from './vehicle.routes';
 
 const routes = (app, route) => {
   route.use(express.json());
-  app.use('/companies', route);
 
   companiesRoutes(route);
   vehicleRoutes(route);

@@ -1,17 +1,17 @@
+import { verifyDuplicateVehiclePlate, verifyVehicleExistence } from '../middlewares/vehicle';
+import {
+  authenticateCompany,
+  validateSchema,
+  verifyCompanyExistence,
+} from '../middlewares/company';
+
 import {
   registerVehicle,
   retrieveVehicle,
   updateVehicle,
   deleteVehicle,
-} from '../controllers';
-import {
-  authenticateCompany,
-  verifyCompanyExistence,
-  verifyDuplicateVehiclePlate,
-  validate,
-  verifyVehicleExistence,
-} from '../middlewares';
-import vehicleSchema from '../shapes';
+} from '../controllers/vehicle';
+import vehicleSchema from '../shapes/vehicleSchema.shape';
 
 const vehicleRoutes = (route) => {
   route.post(
@@ -19,16 +19,11 @@ const vehicleRoutes = (route) => {
     authenticateCompany,
     verifyCompanyExistence,
     verifyDuplicateVehiclePlate,
-    validate(vehicleSchema),
+    validateSchema(vehicleSchema),
     registerVehicle,
   );
 
-  route.get(
-    '/:cnpj/vehicles',
-    authenticateCompany,
-    verifyCompanyExistence,
-    retrieveVehicle,
-  );
+  route.get('/:cnpj/vehicles', authenticateCompany, verifyCompanyExistence, retrieveVehicle);
 
   route.put(
     '/:cnpj/vehicles/:plate',

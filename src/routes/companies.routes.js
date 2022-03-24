@@ -4,17 +4,18 @@ import {
   retrieveCompanies,
   updateCompany,
   deleteCompany,
-} from '../controllers';
+} from '../controllers/company';
+
 import {
-  validate,
-  verifyDuplicateCnpj,
-  authenticateCompany,
   verifyCompanyExistence,
-} from '../middlewares';
-import companySchema from '../shapes';
+  verifyDuplicateCnpj,
+  validateSchema,
+  authenticateCompany,
+} from '../middlewares/company';
+import companySchema from '../shapes/companySchema.shape';
 
 const companiesRoutes = (route) => {
-  route.post('/register', validate(companySchema), verifyDuplicateCnpj, registerCompany);
+  route.post('/register', validateSchema(companySchema), verifyDuplicateCnpj, registerCompany);
 
   route.post('/login', login);
 
@@ -26,7 +27,7 @@ const companiesRoutes = (route) => {
 
   route.get('/teste', (req, res) => {
     const teste = 'teste';
-    return res.json({ message: teste });
+    return res.json({message: teste});
   });
 };
 

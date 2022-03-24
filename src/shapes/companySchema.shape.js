@@ -4,7 +4,7 @@ const companySchema = yup.object().shape({
   name: yup.string('Formato de nome invalido').required('Campo de name obrigátorio'),
   cnpj: yup
     .string('Formato de cnpj invalido')
-    .matches(/^[0-9]{14}$/)
+    .matches(/^[0-9]{14}$/, 'cnpj precisa ter 14 dígitos')
     .required('Campo de cnpj obrigátorio'),
   password: yup.string('Formato de senha invalido').required('Campo de senha obrigátorio'),
   cep: yup.string('Formato de cep invalido').required('Campo de cep obrigátorio'),

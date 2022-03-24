@@ -6,6 +6,11 @@ import config from '../../config';
 
 const login = async (req, res) => {
   const { cnpj, password } = req.body;
+  const key = Object.keys(req.body);
+
+  if (!key.includes('cnpj' && 'password')) {
+    return res.status(400).json({ message: 'wrong keys' });
+  }
 
   const company = companies.find((item) => item.cnpj === cnpj);
 

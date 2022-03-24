@@ -6,8 +6,9 @@ import routes from './routes';
 const route = express.Router();
 const app = express();
 
-routes(app, route);
+app.use('/companies', route);
 
+routes(app, route);
 expressListRoutes(app);
 
 export default app;
