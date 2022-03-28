@@ -12,7 +12,7 @@ import {
   validateSchema,
   authenticateCompany,
 } from '../middlewares/company';
-import companySchema from '../shapes/companySchema.shape';
+import companySchema from '../models/companySchema.shape';
 
 const companiesRoutes = (route) => {
   route.post('/register', validateSchema(companySchema), verifyDuplicateCnpj, registerCompany);
@@ -27,7 +27,7 @@ const companiesRoutes = (route) => {
 
   route.get('/teste', (req, res) => {
     const teste = 'teste';
-    return res.json({message: teste});
+    return res.json({ message: teste });
   });
 };
 

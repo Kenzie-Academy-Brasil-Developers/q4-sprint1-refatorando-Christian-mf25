@@ -12,7 +12,6 @@ const authenticateCompany = (req, res, next) => {
   // eslint-disable-next-line consistent-return
   jwt.verify(token, config.secret, (err, decoded) => {
     if (err) {
-      console.log(err);
       return res.status(401).json({ message: 'Invalid Token.' });
     }
   });

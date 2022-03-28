@@ -7,7 +7,6 @@ import app from '../../app';
 
 describe('Route register Tests', () => {
   const company = createValidCompany;
-  console.log(company);
 
   test('201 created: created company and push to database', async () => {
     const response = await request(app).post('/companies/register').send(company);

@@ -11,7 +11,7 @@ import {
   updateVehicle,
   deleteVehicle,
 } from '../controllers/vehicle';
-import vehicleSchema from '../shapes/vehicleSchema.shape';
+import vehicleSchema from '../models/vehicleSchema.shape';
 
 const vehicleRoutes = (route) => {
   route.post(
